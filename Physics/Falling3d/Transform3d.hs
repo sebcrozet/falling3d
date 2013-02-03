@@ -14,7 +14,7 @@ import Data.Vect.Double.Util.Projective
 type Transform3d = Proj4
 
 instance DeltaTransform Transform3d Vec3 where
-  deltaTransform p v = dt *. v
+  deltaTransform p v = v .* dt
                        where
                        t  = fromProjective p
                        dt = trim t :: Mat3
@@ -26,16 +26,16 @@ instance Translation Transform3d Vec3 where
   translate     = translate4
 
 instance Rotation Transform3d Vec3 where
-  rotate orientationVector = rotateProj4 magnitude normal
+  rotate orientationVector = if magnitude /= 0.0 then
+                               rotateProj4 magnitude normal
+                             else
+                               id
                              where
                              magnitude = len orientationVector
-                             normal    = toNormalUnsafe $ orientationVector &* magnitude
+                             normal    = toNormalUnsafe $ orientationVector &* (1.0 / magnitude)
 
 instance PerpProd Vec3 Vec3 where
   perp = crossprod
 
-instance Transform Transform3d Vec3 Vec3
-
-instance PrincipalDirections Vec3 where
-  principalDirections = [ Vec3 1 0 0, Vec3 0 1 0 , Vec3 0 0 1,
-                          Vec3 (-1) 0 0, Vec3 0 (-1) 0, Vec3 0 0 (-1) ]
+instance Transform       Transform3d Vec3
+instance TransformSystem Transform3d Vec3 Vec3
