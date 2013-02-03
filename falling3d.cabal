@@ -13,9 +13,11 @@ Library
                    Physics.Falling3d.InertiaTensor3d
                    Physics.Falling3d.RigidBody3d
                    Physics.Falling3d.Shape3d
+                   Physics.Falling3d.Box
                    Physics.Falling3d.Shape3dNarrowPhase
                    Physics.Falling3d.Collision3d
                    Physics.Falling3d.Transform3d
-  Build-Depends:   base, vect, falling
+                   Physics.Falling3d.UnitSphere3d
+  Build-Depends:   base, vect, falling, normaldistribution, random
   ghc-options:     -Wall -O2
-  -- -auto-all -caf-all
+  -- -prof -auto-all -caf-all
