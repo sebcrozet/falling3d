@@ -80,11 +80,11 @@ collideStaticDynamicShapes ((StaticBox3d r), t1, it1) ((Ball3d b), t2, it2) =
 collideStaticDynamicShapes ((StaticBox3d r1), t1, it1) ((Box3d r2), t2, it2) =
                             collideImplicitShapeImplicitShape (r1, t1, it1) (r2, t2, it2) _subdivisionNumber
 
-collideStaticDynamicShapes ((Plane3d p), t1, _)        ((Ball3d b), t2, it2) =
-                           collidePlaneImplicitShape p (ShapeWithMargin b) t1 t2 it2
+collideStaticDynamicShapes ((Plane3d p), t1, _)        ((Ball3d b), t2, _) =
+                           collidePlaneImplicitShape p (ShapeWithMargin b) t1 t2
 
-collideStaticDynamicShapes ((Plane3d p), t1, _)        ((Box3d r), t2, it2) =
-                           collidePlaneImplicitShape p (ShapeWithMargin r) t1 t2 it2
+collideStaticDynamicShapes ((Plane3d p), t1, _)        ((Box3d r), t2, _) =
+                           collidePlaneImplicitShape p (ShapeWithMargin r) t1 t2
 
 
 collideDynamicDynamicShapes :: (DynamicShape3d, Transform3d, Transform3d) ->

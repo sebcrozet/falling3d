@@ -18,6 +18,10 @@ instance DeltaTransform Transform3d Vec3 where
                        where
                        t  = fromProjective p
                        dt = trim t :: Mat3
+  deltaTransformTranspose p v = dt *. v
+                                where
+                                t  = fromProjective p
+                                dt = trim t :: Mat3
 
 instance Translation Transform3d Vec3 where
   translation p = trim t :: Vec3
