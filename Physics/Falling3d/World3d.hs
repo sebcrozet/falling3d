@@ -24,6 +24,8 @@ type World3d identifierType broadPhaseType narrowPhaseType contactManifoldType =
                                                                                          InverseInertiaTensor3d
                                                                                          DynamicShape3d
                                                                                          StaticShape3d
+                                                                                         TransformedDynamicShape3d
+                                                                                         TransformedStaticShape3d
                                                                                          broadPhaseType
                                                                                          narrowPhaseType
                                                                                          contactManifoldType

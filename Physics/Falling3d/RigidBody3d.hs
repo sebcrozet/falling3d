@@ -19,6 +19,8 @@ type RigidBody3d = RigidBody Transform3d
                              InverseInertiaTensor3d
                              DynamicShape3d
                              StaticShape3d
+                             TransformedDynamicShape3d
+                             TransformedStaticShape3d
 
 type OrderedRigidBody3d identifierType = OrderedRigidBody identifierType
                                                           Transform3d
@@ -28,3 +30,5 @@ type OrderedRigidBody3d identifierType = OrderedRigidBody identifierType
                                                           InverseInertiaTensor3d
                                                           DynamicShape3d
                                                           StaticShape3d
+                                                          TransformedDynamicShape3d
+                                                          TransformedStaticShape3d

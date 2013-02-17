@@ -23,13 +23,13 @@ instance DeltaTransform Transform3d Vec3 where
                                 t  = fromProjective p
                                 dt = trim t :: Mat3
 
-instance Translation Transform3d Vec3 where
+instance Translatable Transform3d Vec3 where
   translation p = trim t :: Vec3
                   where
                   (Mat4 _ _ _ t) = fromProjective p
   translate     = translate4
 
-instance Rotation Transform3d Vec3 where
+instance Rotatable Transform3d Vec3 where
   rotate orientationVector = if magnitude /= 0.0 then
                                rotateProj4 magnitude normal
                              else

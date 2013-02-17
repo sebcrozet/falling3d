@@ -16,14 +16,9 @@ data Box = Box Double Double Double
            deriving(Show)
 
 instance ImplicitShape Box Vec3 where
-  supportPoint (Box rx ry rz) (Vec3 dx dy dz) = Vec3 (nzsignum dx * rx)
-                                                     (nzsignum dy * ry)
-                                                     (nzsignum dz * rz)
-                                                where
-                                                nzsignum v = if v == 0.0 then
-                                                               1.0
-                                                             else
-                                                               signum v
+  supportPoint (Box rx ry rz) (Vec3 dx dy dz) = Vec3 (signum dx * rx)
+                                                     (signum dy * ry)
+                                                     (signum dz * rz)
 
 boxVolume :: Box -> Double
 boxVolume (Box rx ry rz) = 8.0 * rx * ry * rz
