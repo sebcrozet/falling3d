@@ -19,5 +19,5 @@ Library
                    Physics.Falling3d.Transform3d
                    Physics.Falling3d.UnitSphere3d
                    Physics.Falling3d.OrthonormalBasis3d
-  Build-Depends:   base, vect, falling, normaldistribution, random
+  Build-Depends:   base, vect, falling, normaldistribution, random, vector
   ghc-options:     -Wall -O2
