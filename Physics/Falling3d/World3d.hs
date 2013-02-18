@@ -36,7 +36,9 @@ type DefaultWorld3d identifierType = World3d identifierType
                                              Shape3dNarrowPhase
                                              ContactManifold3d
 
-mkWorld3d :: (Ord identifierType) => DefaultWorld3d identifierType
+-- | Creates a physics world able to simulate 3D physics. It uses the default broad phase
+-- (currently a brute-force broad phase).
+mkWorld3d :: Ord identifierType => DefaultWorld3d identifierType
 mkWorld3d = W.mkWorld mkBroadPhase
                       shape3dCollisionDispatcher
                       solveConstraintsIsland
