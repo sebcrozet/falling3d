@@ -36,6 +36,14 @@ type DefaultWorld3d identifierType = World3d identifierType
                                              Shape3dNarrowPhase
                                              ContactManifold3d
 
+-- We specialize the constraint solver since its inner loop has to be very efficient. Without that
+-- constraint resolution is almost 100 times slower!
+{-# SPECIALIZE solveConstraintsIsland :: (Ord idt) =>
+                                         Double                            ->
+                                         [ (Int, OrderedRigidBody3d idt) ] ->
+                                         [ ContactManifold3d ]             ->
+                                         ([ (Int, OrderedRigidBody3d idt) ], [ ContactManifold3d ]) #-}
+
 -- | Creates a physics world able to simulate 3D physics. It uses the default broad phase
 -- (currently a brute-force broad phase).
 mkWorld3d :: Ord identifierType => DefaultWorld3d identifierType
